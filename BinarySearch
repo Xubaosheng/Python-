@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May  8 17:12:48 2018
+
+@author: Xu
+"""
+def binary_search(list,target):
+    list = sorted(list)
+    low = 0 #列表索引最小位置
+    high = len(list) - 1    #最大位置
+    while low <= high:
+        mid = (low + high) // 2 #求中间值
+        guess = list[mid] 
+        if guess == target: #找到目标值
+            return mid,list
+        if guess > target:  #大于目标值，二分
+            high = mid - 1
+        else:
+            low = mid + 1
+    return None
+if __name__ == "__main__":
+    my_list = [3,1,2,4,6,5,8,7,9]
+    print(binary_search(my_list,4))
+    print(binary_search(my_list,0))
